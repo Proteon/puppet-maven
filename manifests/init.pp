@@ -31,12 +31,9 @@
 #     version => "2.2.1",
 #   }
 #
-class maven {
+class maven (){
 
-  notice('Installing Maven module pre-requisites')
-
-  class { 'maven::maven' :
-    version => '2.2.1',
-  }
-
+    package {'maven':
+        ensure => 'held',
+    }
 }
