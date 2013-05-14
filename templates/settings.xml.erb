@@ -31,7 +31,7 @@
 <% end -%>
 <% unless proxies.empty? -%>
   <proxies>
-<% proxies.each do |proxies| -%>
+<% proxies.each do |proxy| -%>
     <proxy>
       <active>true</active>
       <protocol><%= proxy['protocol'] %></protocol>
