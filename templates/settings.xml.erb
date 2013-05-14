@@ -27,7 +27,20 @@
     </server>
 <% end -%>
   </servers>
-
+  
+<% end -%>
+<% unless proxies.empty? -%>
+  <proxies>
+<% proxies.each do |proxies| -%>
+    <proxy>
+      <active>true</active>
+      <protocol><%= proxy['protocol'] %></protocol>
+      <host><%= proxy['host'] %></host>
+      <port><%= proxy['port'] %></port>
+    </server>
+<% end -%>
+  </proxies>
+  
 <% end -%>
 <% unless default_repo_config.empty? and properties.empty? and repositories.empty? -%>
   <profiles>

@@ -22,6 +22,7 @@ define maven::settings (
     $servers             = [],
     $mirrors             = [],
     $repositories        = [],
+    $proxies             = [],
     $default_repo_config = {
     }
     ,
