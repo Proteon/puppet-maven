@@ -71,19 +71,10 @@ Puppet::Type.type(:maven).provide(:mvn) do
 
     begin
       Timeout::timeout(timeout) do
-        output, status = Puppet::Util::SUIDManager.run_and_capture(command, user, group)
-        debug output if status.exitstatus == 0
-        debug "Exit status = #{status.exitstatus}"
+        output, status = Puppet::Util::Execution.execute(command, {:failonfail => true, :uid => user, :gid => group})
       end
     rescue Timeout::Error
       self.fail("Command timed out, increase timeout parameter if needed: #{command}")
-    end
-
-    if (status.exitstatus == 1) && (output == '')
-      self.fail("mvn returned #{status.exitstatus}: Is Maven installed?")
-    end
-    unless status.exitstatus == 0
-      self.fail("#{command} returned #{status.exitstatus}: #{output}")
     end
   end
 
