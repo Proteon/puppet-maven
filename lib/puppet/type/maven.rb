@@ -79,6 +79,10 @@ Puppet::Type.newtype(:maven) do
     desc "Group to run Maven as. Defaults to root."
   end
 
+  autorequire(:package) do
+    %w{maven}
+  end
+
   validate do
     full_id = self[:id]
     groupid = self[:groupid]
